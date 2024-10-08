@@ -1,10 +1,6 @@
-// routes/contributions.js
 const express = require('express');
 const router = express.Router();
-const mongoose = require('mongoose');
-const Contribution = require('../models/Contribution'); // Importing the model
-
-console.log(typeof Contribution);
+const Contribution = require('../models/Contribution');
 const Joi = require('joi');
 
 // Define a schema for validation
