@@ -1,9 +1,9 @@
 const jwt = require('jsonwebtoken');
 
-function authMiddlewarw(req, res, next) {
-  const token = req.header('Authorization').repalce('Bearer', '');
+function authMiddleware(req, res, next) {
+  const token = req.header('Authorization').replace('Bearer', '');
   if (!token) {
-    return res.status(401).json({ message: 'No token Access Denied' });
+    return res.status(401).json({ message: 'No token, Access Denied' });
   }
 
   try {
@@ -15,4 +15,5 @@ function authMiddlewarw(req, res, next) {
   }
 }
 
-module.exports = authenticateToken;
+module.exports = authMiddleware;
+
