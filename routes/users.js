@@ -4,6 +4,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const Joi = require('joi');
+const authMiddleware = require('../middleware/auth');
 
 // Validation schema
 const registerSchema = Joi.object({
@@ -35,6 +36,19 @@ router.post('/register', async (req, res) => {
       email,
       password,
     });
+
+// @route   GET api/users/profile
+// @desc    Get user profile
+// @access  Private
+router.get('/profile', authMiddleware, async (req, res) => {
+  try {
+    const user = await User.findById(req.user.id).select('-password');
+    res.json(user);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
 
     // Hash password
     const salt = await bcrypt.genSalt(10);
