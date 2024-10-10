@@ -2,9 +2,9 @@
   "name": "onchain-contributions",
   "version": "1.0.0",
   "private": true,
-  "main": "index.js",
+  "main": "server.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "test": "jest",
     "dev": "next dev",
     "build": "next build",
